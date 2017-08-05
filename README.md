@@ -1,6 +1,8 @@
-# Molokai Color Scheme for Vim
+# Molokai Color Scheme for Vim, with transparent terminal backgrounds
 
 Molokai is a Vim port of the monokai theme for TextMate originally created by Wimer Hazenberg.
+
+This fork adds `molokai-term`, a modified version of Molokai that looks better on 256-color terminals and has no background of its own, so it looks good with transparent (but dark!) terminals. Made possible with [CSApprox](https://github.com/godlygeek/csapprox) by Matt Wozniski and the original [molokai](https://github.com/tomasr) by Tomas Restrepo.
 
 By default, it has a dark gray background based on the version created by Hamish Stuart Macpherson for the E editor.
 
@@ -8,19 +10,20 @@ By default, it has a dark gray background based on the version created by Hamish
 
 ![Molokai Original](http://www.winterdom.com/weblog/content/binary/WindowsLiveWriter/MolokaiforVim_8602/molokai_original_small_3.png)
 
-256-Color terminals are also supported, though there are some differences with the Gui version. Only the dark gray background style is supported on terminal vim at this time.
 
-## Installation
+## Installation and Usage
 
-Copy the file on your .vim/colors folder.
+Copy the files to your .vim/colors folder, or use Vundle/Pathogen/your favorite
+Vim plugin manager. Then use the following code in your `.vimrc`
+(`molokai_original` setting optional):
 
-If you prefer the scheme to match the original monokai background color, put this in your .vimrc file: 
+```vim
+set background=dark
+
+if has("gui_running")
+    let g:molokai_original = 1
+    colorscheme molokai
+else
+    colorscheme molokai-term
+endif
 ```
-let g:molokai_original = 1
-```
-
-There is also an alternative scheme under development for color terminals which attempts to bring the 256 color version as close as possible to the the default (dark) GUI version. To access, add this to your .vimrc:
-```
-let g:rehash256 = 1
-```
-
